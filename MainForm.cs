@@ -25,6 +25,7 @@ namespace LTCountDownTimer
         private readonly Bitmap[] _NumImages = new[] {
             Resources.num0,Resources.num1,Resources.num2,Resources.num3,Resources.num4,
             Resources.num5,Resources.num6,Resources.num7,Resources.num8,Resources.num9,
+            Resources.numEmpty
         };
 
         private readonly Bitmap[] _ProgressImages = new[] {
@@ -102,7 +103,10 @@ namespace LTCountDownTimer
         private void UpdateDisplay()
         {
             var m = _SecondsToGo / 60;
-            picM.Image = _NumImages[m];
+            var m1 = m / 10;
+            var m2 = m % 10;
+            picM1.Image = _NumImages[m1 != 0 ? m1 : 10];
+            picM2.Image = _NumImages[m2];
 
             var s = _SecondsToGo % 60;
             var s1 = s / 10;

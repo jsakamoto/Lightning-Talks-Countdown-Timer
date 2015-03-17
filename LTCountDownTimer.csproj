@@ -29,7 +29,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>4.1.0.0</ApplicationVersion>
+    <ApplicationVersion>4.2.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>false</BootstrapperEnabled>
@@ -142,10 +142,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="res\close.pdn" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\progressBar.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\prog00.png" />
@@ -224,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppIcon.ico" />
+    <None Include="res\numEmpty.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
