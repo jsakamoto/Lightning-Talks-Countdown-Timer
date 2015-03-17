@@ -36,11 +36,19 @@
             this.picS2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItem_BlackOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Quit = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerForUIEffects = new System.Windows.Forms.Timer(this.components);
+            this.MenuItem_VirtualClick = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picS2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // picProgress
@@ -95,6 +103,55 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.MenuItem_VirtualClick,
+            this.toolStripMenuItem1,
+            this.MenuItem_BlackOut,
+            this.MenuItem_Quit});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 104);
+            this.contextMenuStrip1.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.contextMenuStrip1_Closed);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(203, 6);
+            // 
+            // MenuItem_BlackOut
+            // 
+            this.MenuItem_BlackOut.Name = "MenuItem_BlackOut";
+            this.MenuItem_BlackOut.Size = new System.Drawing.Size(206, 22);
+            this.MenuItem_BlackOut.Text = "&Black out when timed up";
+            this.MenuItem_BlackOut.Click += new System.EventHandler(this.MenuItem_BlackOut_Click);
+            // 
+            // MenuItem_Quit
+            // 
+            this.MenuItem_Quit.Name = "MenuItem_Quit";
+            this.MenuItem_Quit.Size = new System.Drawing.Size(206, 22);
+            this.MenuItem_Quit.Text = "&Quit";
+            this.MenuItem_Quit.Click += new System.EventHandler(this.MenuItem_Quit_Click);
+            // 
+            // timerForUIEffects
+            // 
+            this.timerForUIEffects.Interval = 50;
+            this.timerForUIEffects.Tick += new System.EventHandler(this.timerForUIEffects_Tick);
+            // 
+            // MenuItem_VirtualClick
+            // 
+            this.MenuItem_VirtualClick.Name = "MenuItem_VirtualClick";
+            this.MenuItem_VirtualClick.Size = new System.Drawing.Size(206, 22);
+            this.MenuItem_VirtualClick.Text = "&Start";
+            this.MenuItem_VirtualClick.Click += new System.EventHandler(this.MenuItem_VirtualClick_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -113,6 +170,8 @@
             this.Name = "MainForm";
             this.Opacity = 0.5D;
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
             this.MouseCaptureChanged += new System.EventHandler(this.MainForm_MouseCaptureChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
@@ -122,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picS2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,6 +194,13 @@
         private System.Windows.Forms.PictureBox picS2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_Quit;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_BlackOut;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.Timer timerForUIEffects;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_VirtualClick;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
 

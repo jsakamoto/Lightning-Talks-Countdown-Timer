@@ -25,11 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://ltcountdowntimer.codeplex.com/releases/clickonce/</InstallUrl>
+    <InstallUrl>http://clickonceget.azurewebsites.net/app/LTCountDownTimer/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>4.0.0.0</ApplicationVersion>
+    <ApplicationVersion>4.1.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>false</BootstrapperEnabled>
@@ -83,7 +83,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>315630C1D165A70EB8EFFCF1F41B66C243C0B58D</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>076D1FC87CF26832F02C5FCF5460F69A827C1E56</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>LTCountDownTimer_TemporaryKey.pfx</ManifestKeyFile>
@@ -93,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>

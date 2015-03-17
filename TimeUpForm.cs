@@ -49,7 +49,7 @@ namespace LTCountDownTimer
             if (this.Opacity <= 0.0001)
             {
                 timer3.Stop();
-                (this.Owner as MainForm).ResetCounter();
+                (this.Owner as MainForm).ResetCounter(resetOpacity: true);
                 this.Close();
             }
         }
