@@ -51,18 +51,20 @@ IE以外のブラウザを使う場合は、.application ファイルがダウ�
 - .NET Framework (2.0, or 3.5 Client Profile, or 4.0 Client Profile)
 - Any processor architecture (x86, x64)
 
-## MacOS, Linux
+## MacOS
 
-This application will run on MacOS and Linux powered by Mono runtime.
+This application will run on MacOS X powered by Mono runtime.
 
 If you want to try it, you can get zip archived edition from **[here](https://github.com/jsakamoto/Lightning-Talks-Countdown-Timer/releases)**.
 
-### Screen shots
-
-#### MacOS 10.8 "Mountain Lion"
+### Screen shot - MacOS 10.8 "Mountain Lion"
 
 ![Running LTCountDwonTimer v4 on MacOSX](contents/Running-LTCountDwonTimer-v4-on-MacOSX.png)
 
-#### Ubuntu 12.04
+## Linux
 
-![Running LTCountDwonTimer v4 on Ubuntu 12.04](contents/Running-LTCountDwonTimer-v4-on-Ubuntu1204.PNG)
+This application will **can not** run on Linux.
+
+You can launch the app powered by Mono runtime for Linux, but **it's steal focus every second** during count down.
+
+And, the app **can not be top most level window** when LibreOffice presentation slideshow.
