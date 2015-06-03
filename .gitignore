@@ -4,3 +4,7 @@ bin/
 obj/
 *.user
 *.suo
+Debug/
+*.filters
+*.ipch
+*.sdf
