@@ -44,6 +44,7 @@
             this.MenuItem_Quit = new System.Windows.Forms.ToolStripMenuItem();
             this.timerForUIEffects = new System.Windows.Forms.Timer(this.components);
             this.picM1 = new System.Windows.Forms.PictureBox();
+            this.MenuItem_DoNotStopWhenClickMainWindow = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picS1)).BeginInit();
@@ -112,40 +113,41 @@
             this.MenuItem_VirtualClick,
             this.toolStripMenuItem1,
             this.MenuItem_BlackOut,
+            this.MenuItem_DoNotStopWhenClickMainWindow,
             this.MenuItem_Quit});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(207, 82);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(283, 126);
             this.contextMenuStrip1.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.contextMenuStrip1_Closed);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(203, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(279, 6);
             // 
             // MenuItem_VirtualClick
             // 
             this.MenuItem_VirtualClick.Name = "MenuItem_VirtualClick";
-            this.MenuItem_VirtualClick.Size = new System.Drawing.Size(206, 22);
+            this.MenuItem_VirtualClick.Size = new System.Drawing.Size(282, 22);
             this.MenuItem_VirtualClick.Text = "&Start";
             this.MenuItem_VirtualClick.Click += new System.EventHandler(this.MenuItem_VirtualClick_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(279, 6);
             // 
             // MenuItem_BlackOut
             // 
             this.MenuItem_BlackOut.Name = "MenuItem_BlackOut";
-            this.MenuItem_BlackOut.Size = new System.Drawing.Size(206, 22);
+            this.MenuItem_BlackOut.Size = new System.Drawing.Size(282, 22);
             this.MenuItem_BlackOut.Text = "&Black out when timed up";
             this.MenuItem_BlackOut.Click += new System.EventHandler(this.MenuItem_BlackOut_Click);
             // 
             // MenuItem_Quit
             // 
             this.MenuItem_Quit.Name = "MenuItem_Quit";
-            this.MenuItem_Quit.Size = new System.Drawing.Size(206, 22);
+            this.MenuItem_Quit.Size = new System.Drawing.Size(282, 22);
             this.MenuItem_Quit.Text = "&Quit";
             this.MenuItem_Quit.Click += new System.EventHandler(this.MenuItem_Quit_Click);
             // 
@@ -162,6 +164,13 @@
             this.picM1.Size = new System.Drawing.Size(20, 34);
             this.picM1.TabIndex = 5;
             this.picM1.TabStop = false;
+            // 
+            // MenuItem_DoNotStopWhenClickMainWindow
+            // 
+            this.MenuItem_DoNotStopWhenClickMainWindow.Name = "MenuItem_DoNotStopWhenClickMainWindow";
+            this.MenuItem_DoNotStopWhenClickMainWindow.Size = new System.Drawing.Size(282, 22);
+            this.MenuItem_DoNotStopWhenClickMainWindow.Text = "&Dont stop when tap/click main window";
+            this.MenuItem_DoNotStopWhenClickMainWindow.Click += new System.EventHandler(this.MenuItem_DoNotStopWhenClickMainWindow_Click);
             // 
             // MainForm
             // 
@@ -215,6 +224,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_VirtualClick;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.PictureBox picM1;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_DoNotStopWhenClickMainWindow;
     }
 }
 

@@ -68,26 +68,35 @@ namespace LTCountDownTimer
             e.Control.MouseUp += MainForm_MouseUp;
             e.Control.MouseClick += MainForm_MouseClick;
         }
-    
-        private void VirtualMouseClick()
+
+        private void VirtualMouseClick(bool fromMenu = false)
         {
             switch (_State)
             {
                 case State.StartPosition:
                     timer1.Start();
                     _State = State.Running;
+                    StartClickUIEffect();
                     break;
                 case State.Running:
-                    timer1.Stop();
-                    _State = State.Aborted;
+                    if (_dontStopWhenClickMainWnd == false || fromMenu == true)
+                    {
+                        timer1.Stop();
+                        _State = State.Aborted;
+                        StartClickUIEffect();
+                    }
                     break;
                 case State.Finished:
                 case State.Aborted:
                     ResetCounter();
                     _State = State.StartPosition;
+                    StartClickUIEffect();
                     break;
             }
+        }
 
+        private void StartClickUIEffect()
+        {
             Opacity = 1.0;
             timerForUIEffects.Start();
         }
@@ -149,6 +158,7 @@ namespace LTCountDownTimer
         private DateTime _timeAtContextMenuClosed;
         private const int _delay = 200;
         private bool _blackOutWhenTimedUp = true;
+        private bool _dontStopWhenClickMainWnd = true;
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -227,6 +237,7 @@ namespace LTCountDownTimer
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MenuItem_BlackOut.Checked = _blackOutWhenTimedUp;
+            MenuItem_DoNotStopWhenClickMainWindow.Checked = _dontStopWhenClickMainWnd;
 
             MenuItem_VirtualClick.Text =
                 _State == State.Running ? "&Stop" :
@@ -249,6 +260,11 @@ namespace LTCountDownTimer
             _blackOutWhenTimedUp = !_blackOutWhenTimedUp;
         }
 
+        private void MenuItem_DoNotStopWhenClickMainWindow_Click(object sender, EventArgs e)
+        {
+            _dontStopWhenClickMainWnd = !_dontStopWhenClickMainWnd;
+        }
+
         private void MenuItem_Timer_Click(object sender, EventArgs e)
         {
             _TimeLimit = (int)(sender as ToolStripMenuItem).Tag;
@@ -263,7 +279,7 @@ namespace LTCountDownTimer
 
         private void MenuItem_VirtualClick_Click(object sender, EventArgs e)
         {
-            VirtualMouseClick();
+            VirtualMouseClick(fromMenu: true);
         }
     }
 }
