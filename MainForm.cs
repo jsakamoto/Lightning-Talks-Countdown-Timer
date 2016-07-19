@@ -48,7 +48,8 @@ namespace LTCountDownTimer
             this.ControlAdded += MainForm_ControlAdded;
             InitializeComponent();
             ResetCounter();
-            //DEBUG: timer1.Interval = 10;
+            //DEBUG: 
+            timer1.Interval = 10;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -159,8 +160,7 @@ namespace LTCountDownTimer
         private void ShowTimeUpForm()
         {
             this.Opacity = 1.0;
-            var timeUpForm = new TimeUpForm();
-            timeUpForm.Show(this);
+            TimeUpForm.ShowForm(this);
         }
 
         private int _mouseState = 0;
