@@ -41,10 +41,11 @@
             this.MenuItem_VirtualClick = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_BlackOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_DoNotStopWhenClickMainWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Quit = new System.Windows.Forms.ToolStripMenuItem();
             this.timerForUIEffects = new System.Windows.Forms.Timer(this.components);
             this.picM1 = new System.Windows.Forms.PictureBox();
-            this.MenuItem_DoNotStopWhenClickMainWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.watchVirtualDesktopTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picS1)).BeginInit();
@@ -116,7 +117,7 @@
             this.MenuItem_DoNotStopWhenClickMainWindow,
             this.MenuItem_Quit});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(283, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(283, 104);
             this.contextMenuStrip1.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.contextMenuStrip1_Closed);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
@@ -144,6 +145,13 @@
             this.MenuItem_BlackOut.Text = "&Black out when timed up";
             this.MenuItem_BlackOut.Click += new System.EventHandler(this.MenuItem_BlackOut_Click);
             // 
+            // MenuItem_DoNotStopWhenClickMainWindow
+            // 
+            this.MenuItem_DoNotStopWhenClickMainWindow.Name = "MenuItem_DoNotStopWhenClickMainWindow";
+            this.MenuItem_DoNotStopWhenClickMainWindow.Size = new System.Drawing.Size(282, 22);
+            this.MenuItem_DoNotStopWhenClickMainWindow.Text = "&Dont stop when tap/click main window";
+            this.MenuItem_DoNotStopWhenClickMainWindow.Click += new System.EventHandler(this.MenuItem_DoNotStopWhenClickMainWindow_Click);
+            // 
             // MenuItem_Quit
             // 
             this.MenuItem_Quit.Name = "MenuItem_Quit";
@@ -165,12 +173,10 @@
             this.picM1.TabIndex = 5;
             this.picM1.TabStop = false;
             // 
-            // MenuItem_DoNotStopWhenClickMainWindow
+            // watchVirtualDesktopTimer
             // 
-            this.MenuItem_DoNotStopWhenClickMainWindow.Name = "MenuItem_DoNotStopWhenClickMainWindow";
-            this.MenuItem_DoNotStopWhenClickMainWindow.Size = new System.Drawing.Size(282, 22);
-            this.MenuItem_DoNotStopWhenClickMainWindow.Text = "&Dont stop when tap/click main window";
-            this.MenuItem_DoNotStopWhenClickMainWindow.Click += new System.EventHandler(this.MenuItem_DoNotStopWhenClickMainWindow_Click);
+            this.watchVirtualDesktopTimer.Interval = 200;
+            this.watchVirtualDesktopTimer.Tick += new System.EventHandler(this.watchVirtualDesktopTimer_Tick);
             // 
             // MainForm
             // 
@@ -225,6 +231,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.PictureBox picM1;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_DoNotStopWhenClickMainWindow;
+        private System.Windows.Forms.Timer watchVirtualDesktopTimer;
     }
 }
 

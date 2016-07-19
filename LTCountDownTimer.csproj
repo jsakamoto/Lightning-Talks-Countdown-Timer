@@ -64,6 +64,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -98,6 +99,14 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\AdjacentDesktop.cs" />
+    <Compile Include="lib\IObjectArray.cs" />
+    <Compile Include="lib\IServiceProvider.cs" />
+    <Compile Include="lib\IVirtualDesktop.cs" />
+    <Compile Include="lib\IVirtualDesktopManager.cs" />
+    <Compile Include="lib\IVirtualDesktopManagerInternal.cs" />
+    <Compile Include="lib\VirtualDesktopManager.cs" />
+    <Compile Include="lib\VirtualDesktopManagerInternal.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

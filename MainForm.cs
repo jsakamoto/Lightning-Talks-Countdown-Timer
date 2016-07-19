@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
+using LTCountDownTimer.lib;
 using LTCountDownTimer.Properties;
 
 namespace LTCountDownTimer
@@ -19,7 +20,7 @@ namespace LTCountDownTimer
         private State _State;
 
         private int _TimeLimit = 5;
-        
+
         private int _SecondsToGo;
 
         private readonly Bitmap[] _NumImages = new[] {
@@ -35,8 +36,15 @@ namespace LTCountDownTimer
             Resources.prog12,
         };
 
+        private IVirtualDesktopManager _VirtualDesktopManager;
+
+        private IVirtualDesktopManagerInternal _VirtualDesktopManagerInternal;
+
         public MainForm()
         {
+            _VirtualDesktopManager = VirtualDesktopManager.CreateInstance();
+            _VirtualDesktopManagerInternal = VirtualDesktopManagerInternal.CreateInstance();
+
             this.ControlAdded += MainForm_ControlAdded;
             InitializeComponent();
             ResetCounter();
@@ -51,7 +59,8 @@ namespace LTCountDownTimer
                 var timerName = "timer" + i.ToString();
                 var timerMinutes = appSettings[timerName];
                 if (timerMinutes == null) break;
-                var menuItemTimer = new ToolStripMenuItem {
+                var menuItemTimer = new ToolStripMenuItem
+                {
                     Name = timerName,
                     Tag = int.Parse(timerMinutes),
                     Text = string.Format("{0} minutes", timerMinutes)
@@ -59,6 +68,9 @@ namespace LTCountDownTimer
                 menuItemTimer.Click += MenuItem_Timer_Click;
                 contextMenuStrip1.Items.Insert(i - 1, menuItemTimer);
             }
+
+            if (_VirtualDesktopManager != null && _VirtualDesktopManagerInternal != null)
+                watchVirtualDesktopTimer.Start();
         }
 
         void MainForm_ControlAdded(object sender, ControlEventArgs e)
@@ -212,7 +224,7 @@ namespace LTCountDownTimer
 
         private void MenuItem_Quit_Click(object sender, EventArgs e)
         {
-            var confirm = 
+            var confirm =
                 _State != State.Running ? DialogResult.OK :
                 MessageBox.Show(this, "Are you sure?", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (confirm == DialogResult.OK)
@@ -241,7 +253,7 @@ namespace LTCountDownTimer
 
             MenuItem_VirtualClick.Text =
                 _State == State.Running ? "&Stop" :
-                _State == State.StartPosition ? "&Start" : 
+                _State == State.StartPosition ? "&Start" :
                 "&Reset";
 
             foreach (var item in contextMenuStrip1.Items)
@@ -252,7 +264,7 @@ namespace LTCountDownTimer
 
                 menuItem.Enabled = !(_State == State.Running);
                 menuItem.Checked = (int)menuItem.Tag == _TimeLimit;
-            } 
+            }
         }
 
         private void MenuItem_BlackOut_Click(object sender, EventArgs e)
@@ -280,6 +292,15 @@ namespace LTCountDownTimer
         private void MenuItem_VirtualClick_Click(object sender, EventArgs e)
         {
             VirtualMouseClick(fromMenu: true);
+        }
+
+        private void watchVirtualDesktopTimer_Tick(object sender, EventArgs e)
+        {
+            if (_VirtualDesktopManager.IsWindowOnCurrentVirtualDesktop(this.Handle) == false)
+            {
+                var currentDesktopID = _VirtualDesktopManagerInternal.GetCurrentDesktop().GetID();
+                _VirtualDesktopManager.MoveWindowToDesktop(this.Handle, ref currentDesktopID);
+            }
         }
     }
 }

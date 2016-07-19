@@ -29,6 +29,7 @@
       <!-- このアプリケーションが動作するように設計されている、Windows のすべてのバージョンの一覧。Windows は最も互換性の高い環境を自動的に選択します。-->
       <!-- アプリケーションが Windows 7 で動作するように設計されている場合は、次の supportedOS ノードのコメントを解除します。-->
       <!--<supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>-->
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
     </application>
   </compatibility>
   <!-- Windows のコモン コントロールとダイアログのテーマを有効にします (Windows XP 以降) -->
