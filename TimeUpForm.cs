@@ -2,6 +2,9 @@
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing.Text;
+using System.Drawing;
+using System.IO;
 
 namespace LTCountDownTimer
 {
@@ -42,6 +45,18 @@ namespace LTCountDownTimer
         public TimeUpForm()
         {
             InitializeComponent();
+
+            var fontPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fonts\\Quantico-BoldItalic.ttf");
+            if (File.Exists(fontPath))
+            {
+                using (var privateFonts = new PrivateFontCollection())
+                {
+                    privateFonts.AddFontFile(fontPath);
+                    var fontFamily = privateFonts.Families[0];
+                    var font = new Font(fontFamily, this.label1.Font.Size, this.label1.Font.Unit);
+                    this.label1.Font = font;
+                }
+            }
         }
 
         private void TimeUpForm_Shown(object sender, EventArgs e)

@@ -68,3 +68,7 @@ This application will **can not** run on Linux.
 You can launch the app powered by Mono runtime for Linux, but **it's steal focus every second** during count down.
 
 And, the app **can not be top most level window** when LibreOffice presentation slideshow.
+
+## Open Source licenses
+
+- **Quantico font** - [http://www.madtype.com](http://www.madtype.com) - [SIL OPEN FONT LICENSE Ver.1.1](fonts/OFL.txt)
