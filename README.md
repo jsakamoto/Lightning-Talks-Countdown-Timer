@@ -51,6 +51,18 @@ IE以外のブラウザを使う場合は、.application ファイルがダウ�
 - .NET Framework (2.0, or 3.5 Client Profile, or 4.0 Client Profile)
 - Any processor architecture (x86, x64)
 
+## Release note / リリースノート
+
+### v.4.5
+
+- Bundle cool font for display "Time Up" form. / 時間切れフォームの表示フォントを改善
+- Persist option settings. / オプション設定を保存
+- Multi monitor support - Show time up form in all monitors. / マルチモニタ対応 - 時間切れフォームをすべてのモニタに表示
+
+### v.4.4
+
+- Windows 10 Virtul Desktop Support - Always show in active virtual desktop. / Windows 10 仮想デスクトップ対応 - 常に現在の仮想デスクトップ上に表示
+
 ## MacOS
 
 This application will run on MacOS X powered by Mono runtime.
