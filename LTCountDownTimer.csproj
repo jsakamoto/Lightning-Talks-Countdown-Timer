@@ -103,6 +103,11 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppSettings.tt</DependentUpon>
+    </Compile>
     <Compile Include="lib\AdjacentDesktop.cs" />
     <Compile Include="lib\IObjectArray.cs" />
     <Compile Include="lib\IServiceProvider.cs" />
@@ -145,9 +150,16 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="AppSettings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AppSettings.cs</LastGenOutput>
+    </Content>
     <Content Include="fonts\Quantico-BoldItalic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="custom.appSettings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="LTCountDownTimer_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -260,7 +272,18 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(ProjectDir)custom.appSettings.config" goto SKIP
+echo ^&lt;?xml version="1.0" encoding="utf-8" ?^&gt; &gt; "$(ProjectDir)custom.appSettings.config"
+echo ^&lt;appSettings^&gt; &gt;&gt; "$(ProjectDir)custom.appSettings.config"
+echo   ^&lt;add key="debug.timerInterval" value=""/^&gt; &gt;&gt; "$(ProjectDir)custom.appSettings.config"
+echo ^&lt;/appSettings^&gt; &gt;&gt; "$(ProjectDir)custom.appSettings.config"
+:SKIP</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

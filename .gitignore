@@ -8,3 +8,4 @@ Debug/
 *.filters
 *.ipch
 *.sdf
+/custom.appSettings.config

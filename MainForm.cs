@@ -54,8 +54,11 @@ namespace LTCountDownTimer
             this.ControlAdded += MainForm_ControlAdded;
             InitializeComponent();
             ResetCounter();
-            //DEBUG: 
-            timer1.Interval = 10;
+
+            if (!string.IsNullOrEmpty(AppSettings.Debug.TimerInterval))
+            {
+                timer1.Interval = int.Parse(AppSettings.Debug.TimerInterval);
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
