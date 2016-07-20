@@ -19,8 +19,6 @@ namespace LTCountDownTimer
 
         private State _State;
 
-        private int _TimeLimit = 5;
-
         private int _SecondsToGo;
 
         private readonly Bitmap[] _NumImages = new[] {
@@ -40,8 +38,16 @@ namespace LTCountDownTimer
 
         private IVirtualDesktopManagerInternal _VirtualDesktopManagerInternal;
 
+        private Option Option { get; set; }
+
         public MainForm()
         {
+            InitializeComponent();
+        }
+
+        public MainForm(Option option)
+        {
+            this.Option = option;
             _VirtualDesktopManager = VirtualDesktopManager.CreateInstance();
             _VirtualDesktopManagerInternal = VirtualDesktopManagerInternal.CreateInstance();
 
@@ -92,7 +98,7 @@ namespace LTCountDownTimer
                     StartClickUIEffect();
                     break;
                 case State.Running:
-                    if (_dontStopWhenClickMainWnd == false || fromMenu == true)
+                    if (this.Option.DontStopWhenClickMainWnd == false || fromMenu == true)
                     {
                         timer1.Stop();
                         _State = State.Aborted;
@@ -117,7 +123,7 @@ namespace LTCountDownTimer
         public void ResetCounter(bool resetOpacity = false)
         {
             _State = State.StartPosition;
-            _SecondsToGo = _TimeLimit * 60;
+            _SecondsToGo = this.Option.TimeLimit * 60;
             UpdateDisplay();
             if (resetOpacity) Opacity = 0.5;
         }
@@ -136,7 +142,7 @@ namespace LTCountDownTimer
             picS1.Image = _NumImages[s1];
             picS2.Image = _NumImages[s2];
 
-            var p = 12 * (_TimeLimit * 60 - _SecondsToGo) / (_TimeLimit * 60);
+            var p = 12 * (this.Option.TimeLimit * 60 - _SecondsToGo) / (this.Option.TimeLimit * 60);
             picProgress.Image = _ProgressImages[p];
 
             BringToFront();
@@ -149,7 +155,7 @@ namespace LTCountDownTimer
             {
                 timer1.Stop();
                 _State = State.Finished;
-                if (_blackOutWhenTimedUp) ShowTimeUpForm();
+                if (this.Option.BlackOutWhenTimedUp) ShowTimeUpForm();
             }
             else
             {
@@ -169,8 +175,6 @@ namespace LTCountDownTimer
         private DateTime _timeAtMouseDonw = DateTime.MaxValue;
         private DateTime _timeAtContextMenuClosed;
         private const int _delay = 200;
-        private bool _blackOutWhenTimedUp = true;
-        private bool _dontStopWhenClickMainWnd = true;
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -248,8 +252,8 @@ namespace LTCountDownTimer
 
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MenuItem_BlackOut.Checked = _blackOutWhenTimedUp;
-            MenuItem_DoNotStopWhenClickMainWindow.Checked = _dontStopWhenClickMainWnd;
+            MenuItem_BlackOut.Checked = this.Option.BlackOutWhenTimedUp;
+            MenuItem_DoNotStopWhenClickMainWindow.Checked = this.Option.DontStopWhenClickMainWnd;
 
             MenuItem_VirtualClick.Text =
                 _State == State.Running ? "&Stop" :
@@ -263,23 +267,23 @@ namespace LTCountDownTimer
                 if (menuItem.Name.StartsWith("timer") == false) continue;
 
                 menuItem.Enabled = !(_State == State.Running);
-                menuItem.Checked = (int)menuItem.Tag == _TimeLimit;
+                menuItem.Checked = (int)menuItem.Tag == this.Option.TimeLimit;
             }
         }
 
         private void MenuItem_BlackOut_Click(object sender, EventArgs e)
         {
-            _blackOutWhenTimedUp = !_blackOutWhenTimedUp;
+            this.Option.BlackOutWhenTimedUp = !this.Option.BlackOutWhenTimedUp;
         }
 
         private void MenuItem_DoNotStopWhenClickMainWindow_Click(object sender, EventArgs e)
         {
-            _dontStopWhenClickMainWnd = !_dontStopWhenClickMainWnd;
+            this.Option.DontStopWhenClickMainWnd = !this.Option.DontStopWhenClickMainWnd;
         }
 
         private void MenuItem_Timer_Click(object sender, EventArgs e)
         {
-            _TimeLimit = (int)(sender as ToolStripMenuItem).Tag;
+            this.Option.TimeLimit = (int)(sender as ToolStripMenuItem).Tag;
             ResetCounter();
         }
 
