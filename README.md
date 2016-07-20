@@ -72,3 +72,5 @@ And, the app **can not be top most level window** when LibreOffice presentation 
 ## Open Source licenses
 
 - **Quantico font** - [http://www.madtype.com](http://www.madtype.com) - [SIL OPEN FONT LICENSE Ver.1.1](fonts/OFL.txt)
+- **Json.NET** - [http://www.newtonsoft.com/json](http://www.newtonsoft.com/json) - [The MIT License (MIT)](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)
+- **SwissKnife.T4.AppSettings** - [https://github.com/shibayan/SwissKnife/](https://github.com/shibayan/SwissKnife/) - [Apache License Ver.2.0](https://github.com/shibayan/SwissKnife/blob/master/LICENSE.md)
