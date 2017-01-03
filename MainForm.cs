@@ -36,7 +36,7 @@ namespace LTCountDownTimer
 
         private IVirtualDesktopManager _VirtualDesktopManager;
 
-        private IVirtualDesktopManagerInternal _VirtualDesktopManagerInternal;
+        private CurrentDesktopGetter _GetCurrentDesktop;
 
         private Option Option { get; set; }
 
@@ -49,7 +49,7 @@ namespace LTCountDownTimer
         {
             this.Option = option;
             _VirtualDesktopManager = VirtualDesktopManager.CreateInstance();
-            _VirtualDesktopManagerInternal = VirtualDesktopManagerInternal.CreateInstance();
+            _GetCurrentDesktop = VirtualDesktopManagerInternal._GetCurrentDesktopGetter();
 
             this.ControlAdded += MainForm_ControlAdded;
             InitializeComponent();
@@ -79,7 +79,7 @@ namespace LTCountDownTimer
                 contextMenuStrip1.Items.Insert(i - 1, menuItemTimer);
             }
 
-            if (_VirtualDesktopManager != null && _VirtualDesktopManagerInternal != null)
+            if (_VirtualDesktopManager != null && _GetCurrentDesktop != null)
                 watchVirtualDesktopTimer.Start();
         }
 
@@ -305,7 +305,7 @@ namespace LTCountDownTimer
         {
             if (_VirtualDesktopManager.IsWindowOnCurrentVirtualDesktop(this.Handle) == false)
             {
-                var currentDesktopID = _VirtualDesktopManagerInternal.GetCurrentDesktop().GetID();
+                var currentDesktopID = _GetCurrentDesktop().GetID();
                 _VirtualDesktopManager.MoveWindowToDesktop(this.Handle, ref currentDesktopID);
             }
         }

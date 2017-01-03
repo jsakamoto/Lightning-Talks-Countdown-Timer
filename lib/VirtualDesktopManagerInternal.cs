@@ -4,9 +4,11 @@ using System.Runtime.InteropServices;
 
 namespace LTCountDownTimer.lib
 {
+    public delegate IVirtualDesktop CurrentDesktopGetter();
+
     public static class VirtualDesktopManagerInternal
     {
-        public static IVirtualDesktopManagerInternal CreateInstance()
+        public static CurrentDesktopGetter _GetCurrentDesktopGetter()
         {
             try
             {
@@ -14,11 +16,21 @@ namespace LTCountDownTimer.lib
                 var shell = Activator.CreateInstance(shellType) as IServiceProvider;
 
                 object ppvObject;
-                //var guidService = new Guid("aa509086-5ca9-4c25-8f95-589d3c07b48a");
                 var guidService = new Guid("c5e0cdca-7b6e-41b2-9fc4-d93975cc467b");
-                shell.QueryService(ref guidService, typeof(IVirtualDesktopManagerInternal).GUID, out ppvObject);
 
-                return ppvObject as IVirtualDesktopManagerInternal;
+                shell.QueryService(ref guidService, typeof(IVirtualDesktopManagerInternalG1).GUID, out ppvObject);
+                if (ppvObject != null)
+                    return (ppvObject as IVirtualDesktopManagerInternalG1).GetCurrentDesktop;
+
+                shell.QueryService(ref guidService, typeof(IVirtualDesktopManagerInternalG2).GUID, out ppvObject);
+                if (ppvObject != null)
+                    return (ppvObject as IVirtualDesktopManagerInternalG2).GetCurrentDesktop;
+
+                shell.QueryService(ref guidService, typeof(IVirtualDesktopManagerInternalG3).GUID, out ppvObject);
+                if (ppvObject != null)
+                    return (ppvObject as IVirtualDesktopManagerInternalG3).GetCurrentDesktop;
+
+                return null;
             }
             catch (COMException e) when (e.ErrorCode == -2147221164 /* E_CLASSNOTREG */)
             {
