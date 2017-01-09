@@ -25,7 +25,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://clickonceget.azurewebsites.net/app/LTCountDownTimer/</InstallUrl>
+    <InstallUrl>https://clickonceget.azurewebsites.net/app/LTCountDownTimer/</InstallUrl>
+    <SupportUrl>https://github.com/jsakamoto/Lightning-Talks-Countdown-Timer</SupportUrl>
+    <ProductName>Lightning Talks Countdown Timer</ProductName>
+    <PublisherName>J.Sakamoto</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
