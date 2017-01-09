@@ -53,6 +53,10 @@ IE以外のブラウザを使う場合は、.application ファイルがダウ�
 
 ## Release note / リリースノート
 
+### v.4.5.1
+
+- Fix: "Show this app on all desktops" doesn't work on Win10 v1607 (Build 14393) / Win10 v1607 (Build 14393) で「このアプリをすべての仮想デスクトップに表示」が機能していなかった不具合を修正
+
 ### v.4.5
 
 - Bundle cool font for display "Time Up" form. / 時間切れフォームの表示フォントを改善
