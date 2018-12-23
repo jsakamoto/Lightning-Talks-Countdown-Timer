@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Lightning Talk Countdown Timer")]
-[assembly: AssemblyCopyright("Copyright © 2011-2017 J.Sakamoto")]
+[assembly: AssemblyCopyright("Copyright © 2011-2018 J.Sakamoto")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
